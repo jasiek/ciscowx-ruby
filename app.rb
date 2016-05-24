@@ -1,7 +1,7 @@
 class App < Sinatra::Base
   get '/' do
-    city = request['X_GEOIP_CITY_NAME']
-    country = request['X_GEOIP_COUNTRY']
+    city = request.env['X_GEOIP_CITY_NAME']
+    country = request.env['X_GEOIP_COUNTRY']
     
     builder do |xml|
       xml.CiscoIPPhoneMenu do |m|
