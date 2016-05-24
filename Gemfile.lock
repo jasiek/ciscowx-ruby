@@ -1,9 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    builder (3.2.2)
     geoip (1.6.1)
     openweathermap (0.0.6)
     rack (1.6.4)
+    rack-geoipcity (1.0.0)
+      geoip
+      rack
     rack-protection (1.5.3)
       rack
     sinatra (1.4.6)
@@ -16,8 +20,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  geoip
+  builder
   openweathermap
+  rack-geoipcity
   sinatra
 
 BUNDLED WITH
