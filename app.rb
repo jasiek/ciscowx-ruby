@@ -21,17 +21,17 @@ class App < Sinatra::Base
         m.Title "Weather for #{city}, #{country}"
         m.MenuItem do |mi|
           mi.Title "Krakow today"
-          mi.URL "/wx/#{Date.today}"
+          mi.URL url("/wx/#{Date.today}")
         end
         m.MenuItem do |mi|
           mi.Title "Krakow tomorrow"
-          mi.URL "/wx/#{Date.today + 1}"
+          mi.URL url("/wx/#{Date.today + 1}")
         end
         (2..5).each do |offset|
           date = Date.today + offset
           m.MenuItem do |mi|
             mi.Title "Krakow #{date}"
-            mi.URL "/wx/#{date}"
+            mi.URL url("/wx/#{date}")
           end
         end
       end
