@@ -22,6 +22,7 @@ Or deploy your own wherever you want. You'll need the following:
 
 * Ruby 2.2
 * Redis (for caching requests to forecast.io)
+* MaxMind GeoIP Lite city database (for IP lookups, goes into `vendor/GeoIPCity.dat`.
 * forecast.io API key (goes into the `FORECASTIO_KEY` env variable)
 
 ##### Compatibility
