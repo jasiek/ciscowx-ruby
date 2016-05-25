@@ -1,7 +1,7 @@
 class App < Sinatra::Base
   get '/wx/:date' do
-    city = request.env['GEOIP_CITY_NAME']
-    country = request.env['GEOIP_COUNTRY_NAME']
+    city = request.env['GEOIP_CITY_NAME'].to_ascii
+    country = request.env['GEOIP_COUNTRY_NAME'].to_ascii
     date = params['date']
     
     builder do |xml|
@@ -13,8 +13,8 @@ class App < Sinatra::Base
   end
   
   get '/' do
-    city = request.env['GEOIP_CITY_NAME']
-    country = request.env['GEOIP_COUNTRY_NAME']
+    city = request.env['GEOIP_CITY_NAME'].to_ascii
+    country = request.env['GEOIP_COUNTRY_NAME'].to_ascii
     
     builder do |xml|
       xml.CiscoIPPhoneMenu do |m|

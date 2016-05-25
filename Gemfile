@@ -4,5 +4,6 @@ gem "sinatra"
 gem "rack-geoipcity"
 gem "openweathermap"
 gem "builder"
+gem "unidecoder"
 
 
