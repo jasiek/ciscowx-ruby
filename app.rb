@@ -27,7 +27,8 @@ class App < Sinatra::Base
           mi.Title "Krakow tomorrow"
           mi.URL "/wx/#{Date.today + 1}"
         end
-        (Date.today + 2)..(Date.today + 5).each do |date|
+        (2..5).each do |offset|
+          date = Date.today + offset
           m.MenuItem do |mi|
             mi.Title "Krakow #{date}"
             mi.URL "/wx/#{date}"
