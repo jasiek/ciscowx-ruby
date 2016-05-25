@@ -20,17 +20,17 @@ class App < Sinatra::Base
       xml.CiscoIPPhoneMenu do |m|
         m.Title "Weather for #{city}, #{country}"
         m.MenuItem do |mi|
-          mi.Title "Krakow today"
+          mi.Name "#{city} today"
           mi.URL url("/wx/#{Date.today}")
         end
         m.MenuItem do |mi|
-          mi.Title "Krakow tomorrow"
+          mi.Name "#{city} tomorrow"
           mi.URL url("/wx/#{Date.today + 1}")
         end
         (2..5).each do |offset|
           date = Date.today + offset
           m.MenuItem do |mi|
-            mi.Title "Krakow #{date}"
+            mi.Name "#{city} #{date}"
             mi.URL url("/wx/#{date}")
           end
         end
