@@ -1,3 +1,5 @@
+require 'json'
+
 ForecastIO.api_key = ENV['FORECASTIO_KEY']
 
 class Weather
@@ -22,7 +24,7 @@ class Weather
 
     output = []
     output << for_date.summary
-    output << "#{Integer(100 * for_date.precipProbability)}% chance of rain"
+    output << "#{Integer(100 * for_date.precipProbability)} pct chance of rain"
     output << "Temperatures: #{for_date.temperatureMin}-#{for_date.temperatureMax}C"
     output << "Humidity: #{Integer(100 * for_date.humidity)}"
     output.join("\n")
@@ -34,7 +36,7 @@ class Weather
 
   def retrieve_content
     if content = @redis.get(key)
-      Hashie::Mash.new(content)
+      Hashie::Mash.new(JSON.parse(content))
     else
       fetch_and_store_content
     end
@@ -48,7 +50,7 @@ class Weather
 
   def content_for_date(content, date)
     content.daily.data.find do |data|
-      Time.at(data.time).to_date == date
+      Time.at(data.time).to_date == Date.parse(date)
     end
   end
 end
