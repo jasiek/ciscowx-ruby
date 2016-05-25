@@ -2,14 +2,24 @@ GEM
   remote: https://rubygems.org/
   specs:
     builder (3.2.2)
+    byebug (8.2.5)
+    faraday (0.9.2)
+      multipart-post (>= 1.2, < 3)
+    forecast_io (2.0.0)
+      faraday
+      hashie
+      multi_json
     geoip (1.6.1)
-    openweathermap (0.0.6)
+    hashie (3.4.4)
+    multi_json (1.12.1)
+    multipart-post (2.0.0)
     rack (1.6.4)
     rack-geoipcity (1.0.0)
       geoip
       rack
     rack-protection (1.5.3)
       rack
+    redis (3.3.0)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -22,8 +32,10 @@ PLATFORMS
 
 DEPENDENCIES
   builder
-  openweathermap
+  byebug
+  forecast_io
   rack-geoipcity
+  redis
   sinatra
   unidecoder
 
