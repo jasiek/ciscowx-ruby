@@ -1,6 +1,12 @@
 require './weather'
+require 'ipaddr'
 
 class App < Sinatra::Base
+  before do
+    ip = IPAddr.new(request.env['REMOTE_ADDR'])
+    halt 'Sorry, IPv4 only' unless ip.ipv4?
+  end
+  
   get '/wx/:date' do
     city = request.env['GEOIP_CITY_NAME'].to_ascii
     country = request.env['GEOIP_COUNTRY_NAME'].to_ascii
